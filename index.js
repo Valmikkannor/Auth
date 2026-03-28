@@ -7,17 +7,21 @@ const cors = require("cors");
 
 const app = express();
 
-app.use(express.json());
-app.use(cookieParser());
-const PORT = process.env.PORT || 4000;
-
 app.use(
     cors({
-        origin: ["http://localhost:5173"],
+        origin: [
+
+            "https://auth-frontend-ten-tau.vercel.app"
+        ],
         methods: ["GET", "POST", "PUT", "DELETE"],
         credentials: true,
     })
 );
+app.use(express.json());
+app.use(cookieParser());
+const PORT = process.env.PORT || 4000;
+
+
 
 app.use("/", authRoute)
 
@@ -27,9 +31,7 @@ mongoose.connect(process.env.MONGO_URI)
     .catch(err => console.log(err));
 
 
-app.get("/test", (req, res) => {
-    res.send("API working 🚀");
-});
+
 app.listen(PORT, () => {
     console.log(`Server is listening on port ${PORT}`);
 });
