@@ -22,13 +22,13 @@ app.use(
 app.use("/", authRoute)
 
 
-mongoose.connect(process.env.MONGO_URL)
+mongoose.connect(process.env.MONGO_URI)
     .then(() => console.log("DB Connected"))
     .catch(err => console.log(err));
 
 
-app.get("/", (req, res) => {
-    res.send("Server working ✅");
+app.get("/test", (req, res) => {
+    res.send("API working 🚀");
 });
 app.listen(PORT, () => {
     console.log(`Server is listening on port ${PORT}`);
