@@ -6,9 +6,10 @@ const authRoute = require("./Routes/AuthRoute");
 const cors = require("cors");
 
 const app = express();
-const PORT = 4000;
+
 app.use(express.json());
 app.use(cookieParser());
+const PORT = 4000;
 
 app.use(
     cors({
